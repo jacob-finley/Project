@@ -1,5 +1,5 @@
 from tkinter import *
-import gui_commands
+from gui_commands import *
 
 
 class GUI:
@@ -17,8 +17,6 @@ class GUI:
                 DARKER GREY TO SHOW THE USER WHAT BUTTON THEY PRESSED
         :param window: comes from the main.py file to initialize the window
         """
-        #TODO: -MAKE THE BUTTONS ABLE TO PRINT TO THE USER ENTRY LABEL
-        #TODO: -MAKE THE BUTTONS COMMUNICATE WITH CALCULATOR.PY
 
         self.window = window
         self.window.config(bg='light grey')
@@ -99,58 +97,58 @@ class GUI:
         self.equal_button.pack(side='left')
 
     def clear(self):
-        gui_commands.clear(self.user_entry1)
+        clear(self.user_entry1)
 
     def negative_switch(self):
-        gui_commands.negative_switch(self.user_entry1)
+        negative_switch(self.user_entry1)
 
     def percent(self):
-        gui_commands.percent(self.user_entry1)
+        percent(self.user_entry1)
 
     def divide(self):
-        gui_commands.divide(self.user_entry1)
+        divide(self.user_entry1)
 
     def seven(self):
-        gui_commands.seven(self.user_entry1)
+        seven(self.user_entry1)
 
     def eight(self):
-        gui_commands.eight(self.user_entry1)
+        eight(self.user_entry1)
 
     def nine(self):
-        gui_commands.nine(self.user_entry1)
+        nine(self.user_entry1)
 
     def multiply(self):
-        gui_commands.multiply(self.user_entry1)
+        multiply(self.user_entry1)
 
     def four(self):
-        gui_commands.four(self.user_entry1)
+        four(self.user_entry1)
 
     def five(self):
-        gui_commands.five(self.user_entry1)
+        five(self.user_entry1)
 
     def six(self):
-        gui_commands.six(self.user_entry1)
+        six(self.user_entry1)
 
     def subtract(self):
-        gui_commands.subtract(self.user_entry1)
+        subtract(self.user_entry1)
 
     def one(self):
-        gui_commands.one(self.user_entry1)
+        one(self.user_entry1)
 
     def two(self):
-        gui_commands.two(self.user_entry1)
+        two(self.user_entry1)
 
     def three(self):
-        gui_commands.three(self.user_entry1)
+        three(self.user_entry1)
 
     def add(self):
-        gui_commands.add(self.user_entry1)
+        add(self.user_entry1)
 
     def zero(self):
-        gui_commands.zero(self.user_entry1)
+        zero(self.user_entry1)
 
     def period(self):
-        gui_commands.period(self.user_entry1)
+        period(self.user_entry1)
 
     def equals(self):
-        gui_commands.equals(self.user_entry1)
+        equals(self.user_entry1)

@@ -10,7 +10,7 @@ def main() -> None:
     window.title('CALCULATOR')
     window.geometry('200x190')
     window.resizable(False, False)
-    widgets = GUI(window)
+    GUI(window)
     window.mainloop()
 
 

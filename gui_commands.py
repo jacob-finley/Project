@@ -1,189 +1,367 @@
-from tkinter import *
+def clear(user_entry1) -> str:
+    """
+    clears the label
 
-#FIXME: ADD CHARACTER LIMIT OF LEN(26) TO ALL CODE
+    :param user_entry1: the text inside the label
+    :return: str
+    """
+    return user_entry1.config(text='0')
 
 
-def clear(user_entry1):
-    user_entry1.config(text='0')
+def negative_switch(user_entry1) -> str:
+    """
+    switches the sign of the last inputted number
 
-
-def negative_switch(user_entry1):
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    display = text.split()
-    if display[-1].isdigit():
-        display[-1] = str(-1 * int(display[-1]))
-        text = ''
-        for items in display:
-            text += f'{items} '
-        user_entry1.config(text=f'{text}')
-    elif display[-1].startswith('-'):
-        if display[-1][1:].isdigit():
+    if len(text) > 22:
+        pass
+    else:
+        display = text.split()
+        if display[-1].isdigit():
             display[-1] = str(-1 * int(display[-1]))
             text = ''
             for items in display:
                 text += f'{items} '
-            user_entry1.config(text=f'{text}')
+            return user_entry1.config(text=f'{text}')
+        elif display[-1].startswith('-'):
+            if display[-1][1:].isdigit():
+                display[-1] = str(-1 * int(display[-1]))
+                text = ''
+                for items in display:
+                    text += f'{items} '
+                return user_entry1.config(text=f'{text}')
+            else:
+                return user_entry1.config(text='SYNTAX ERROR')
         else:
-            user_entry1.config(text='SYNTAX ERROR')
-    else:
-        user_entry1.config(text='SYNTAX ERROR')
+            return user_entry1.config(text='SYNTAX ERROR')
     
     
-def percent(user_entry1):
+def percent(user_entry1) -> str:
+    """
+    divides the last inputted number by 100 to
+    easily convert it into a percent
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    display = text.split()
-    if display[-1].isdigit() or '.' in display[-1]:
-        display[-1] = str(float(display[-1]) / 100)
-        text = ''
-        for items in display:
-            text += f'{items} '
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        user_entry1.config(text='SYNTAX ERROR')
-    # FIXME: prevent exponential error (ex: 8e-6:: throws SYNTAX ERROR)
+        display = text.split()
+        if display[-1].isdigit() or '.' in display[-1] or 'e-' in display[-1]:
+            display[-1] = str(float(display[-1]) / 100)
+            text = ''
+            for items in display:
+                text += f'{items} '
+            return user_entry1.config(text=f'{text}')
+        else:
+            return user_entry1.config(text='SYNTAX ERROR')
 
 
-def divide(user_entry1):
+def divide(user_entry1) -> str:
+    """
+    divides the numbers to the immediate left and right
+    of the division sign
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == 'SYNTAX ERROR':
-        user_entry1.config(text='0')
+    if len(text) > 22:
+        pass
     else:
-        user_entry1.config(text=f'{text} / ')
+        if text == 'SYNTAX ERROR':
+            return user_entry1.config(text='0')
+        else:
+            return user_entry1.config(text=f'{text} / ')
 
 
-def seven(user_entry1):
+def seven(user_entry1) -> str:
+    """
+    either starts the label with a 7 or creates a 7
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '7'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '7'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '7'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '7'
+            return user_entry1.config(text=f'{text}')
 
 
-def eight(user_entry1):
+def eight(user_entry1) -> str:
+    """
+    either starts the label with an 8 or creates an 8
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '8'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '8'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '8'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '8'
+            return user_entry1.config(text=f'{text}')
 
 
-def nine(user_entry1):
+def nine(user_entry1) -> str:
+    """
+    either starts the label with a 9 or creates a 9
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '9'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '9'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '9'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '9'
+            return user_entry1.config(text=f'{text}')
 
 
-def multiply(user_entry1):
+def multiply(user_entry1) -> str:
+    """
+    takes the numbers to the immediate left and right
+    of the multiplication symbol and multiplies them
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == 'SYNTAX ERROR':
-        user_entry1.config(text='0')
+    if len(text) > 22:
+        pass
     else:
-        user_entry1.config(text=f'{text} x ')
+        if text == 'SYNTAX ERROR':
+            return user_entry1.config(text='0')
+        else:
+            return user_entry1.config(text=f'{text} x ')
 
 
-def four(user_entry1):
+def four(user_entry1) -> str:
+    """
+        either starts the label with a 4 or creates a 4
+        in the label
+
+        :param user_entry1: the text inside the label
+        :return: str
+        """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '4'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '4'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '4'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '4'
+            return user_entry1.config(text=f'{text}')
 
 
-def five(user_entry1):
+def five(user_entry1) -> str:
+    """
+        either starts the label with a 5 or creates a 5
+        in the label
+
+        :param user_entry1: the text inside the label
+        :return: str
+        """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '5'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '5'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '5'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '5'
+            return user_entry1.config(text=f'{text}')
 
 
-def six(user_entry1):
+def six(user_entry1) -> str:
+    """
+    either starts the label with a 6 or creates a 6
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '6'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '6'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '6'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '6'
+            return user_entry1.config(text=f'{text}')
 
 
-def subtract(user_entry1):
+def subtract(user_entry1) -> str:
+    """
+    takes the two numbers to the immediate left and right
+    of the subtraction sign and subtracts them
+
+    :param user_entry1: the text inside the label
+    :return: str
+        """
     text = user_entry1.cget('text')
-    if text == 'SYNTAX ERROR':
-        user_entry1.config(text='0')
+    if len(text) > 22:
+        pass
     else:
-        user_entry1.config(text=f'{text} - ')
+        if text == 'SYNTAX ERROR':
+            return user_entry1.config(text='0')
+        else:
+            return user_entry1.config(text=f'{text} - ')
 
 
-def one(user_entry1):
+def one(user_entry1) -> str:
+    """
+    either starts the label with a 1 or creates a 1
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '1'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '1'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '1'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '1'
+            return user_entry1.config(text=f'{text}')
 
 
-def two(user_entry1):
+def two(user_entry1) -> str:
+    """
+    either starts the label with a 2 or creates a 2
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '2'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '2'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '2'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '2'
+            return user_entry1.config(text=f'{text}')
 
 
-def three(user_entry1):
+def three(user_entry1) -> str:
+    """
+    either starts the label with a 3 or creates a 3
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '3'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '3'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '3'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '3'
+            return user_entry1.config(text=f'{text}')
 
 
-def add(user_entry1):
+def add(user_entry1) -> str:
+    """
+    takes the two numbers to the immediate left and right
+    of the addition sign and adds them
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == 'SYNTAX ERROR':
-        user_entry1.config(text='0')
+    if len(text) > 22:
+        pass
     else:
-        user_entry1.config(text=f'{text} + ')
+        if text == 'SYNTAX ERROR':
+            return user_entry1.config(text='0')
+        else:
+            return user_entry1.config(text=f'{text} + ')
 
 
-def zero(user_entry1):
+def zero(user_entry1) -> str:
+    """
+    either starts the label with a 0 or creates a 0
+    in the label
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == '0' or text == 'SYNTAX ERROR':
-        text = '0'
-        user_entry1.config(text=f'{text}')
+    if len(text) > 22:
+        pass
     else:
-        text += '0'
-        user_entry1.config(text=f'{text}')
+        if text == '0' or text == 'SYNTAX ERROR':
+            text = '0'
+            return user_entry1.config(text=f'{text}')
+        else:
+            text += '0'
+            return user_entry1.config(text=f'{text}')
 
 
-def period(user_entry1):
+def period(user_entry1) -> str:
+    """
+    adds a period to the number or if no number exists
+    will create a 0. in instead
+
+    :param user_entry1: the text inside the label
+    :return: str
+    """
     text = user_entry1.cget('text')
-    if text == 'SYNTAX ERROR':
-        user_entry1.config(text='0')
+    if len(text) > 20:
+        pass
     else:
-        user_entry1.config(text=f'{text}.')
+        if text == 'SYNTAX ERROR':
+            return user_entry1.config(text='0')
+        else:
+            if text[-1].isspace():
+                return user_entry1.config(text=f'{text}0.')
+            else:
+                return user_entry1.config(text=f'{text}.')
     
     
-def equals(user_entry1):
+def equals(user_entry1) -> str:
+    """
+    will perform the equation in the label
+
+    :param user_entry1: the text in the label
+    :return: str
+    """
     text = user_entry1.cget('text')
     equation = text.split()
     try:
@@ -200,7 +378,6 @@ def equals(user_entry1):
                         m_d_index.append(i)
                     elif equation[i] == '+' or equation[i] == '-':
                         a_s_index.append(i)
-
                 if 'x' in equation or '/' in equation:
                     for char in equation:
                         if char == 'x':
@@ -233,10 +410,10 @@ def equals(user_entry1):
                             del equation[sub_position - 1]
                             del equation[sub_position]
     except ZeroDivisionError:
-        user_entry1.config(text='SYNTAX ERROR')
+        return user_entry1.config(text='SYNTAX ERROR')
     except ValueError:
-        user_entry1.config(text='0')
+        return user_entry1.config(text='0')
     except IndexError:
-        user_entry1.config(text=f'{text}')
+        return user_entry1.config(text=f'{text}')
     else:
-        user_entry1.config(text=result)
+        return user_entry1.config(text=result)
