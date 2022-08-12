@@ -345,6 +345,12 @@ def equals(user_entry1) -> str:
     text = user_entry1.cget('text')
     equation = text.split()             # turns display into ordered list
     try:
+        for i in range(len(equation)):
+            for j in range(len(equation)):
+                if i == j:
+                    continue
+                if ((i + 1 == j) or (i - 1 == j)) and type(equation[i]) == type(equation[j]):
+                    raise SyntaxError
         if text == 'SYNTAX ERROR':      # checks to see if text is an error
             raise ValueError
         elif len(equation) == 1:        # checks to see if only one character is passed
@@ -390,6 +396,8 @@ def equals(user_entry1) -> str:
                             del equation[sub_position - 1]      # deletes the first num
                             del equation[sub_position]          # deletes the second num
     except ZeroDivisionError:       # checks x / 0 in display
+        return user_entry1.config(text='SYNTAX ERROR')
+    except SyntaxError:             # checks for valid function ex: "0.88 4 + 3"
         return user_entry1.config(text='SYNTAX ERROR')
     except ValueError:              # replaces error screen with zero screen
         return user_entry1.config(text='0')
